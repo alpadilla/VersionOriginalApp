@@ -1,0 +1,40 @@
+﻿<Window x:Class="VersionOriginalApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid Background="#44475a">
+        <DockPanel>
+            <Menu DockPanel.Dock="Top" Background="#282a36" Foreground="White">
+                <MenuItem Header="_Aplicación" Style="{StaticResource MenuItemBaseStyle}">
+                    <MenuItem Header="_Close"/>
+                </MenuItem>
+                <MenuItem Header="_Películas" Style="{StaticResource MenuItemBaseStyle}">
+                    <MenuItem Header="_Alquilar"/>
+                    <MenuItem Header="_Adicionar"/>
+                    <MenuItem Header="_Listado" Click="FilmListItem_OnClick"/>
+                </MenuItem>
+                <MenuItem Header="_Socios" Style="{StaticResource MenuItemBaseStyle}">
+                    <MenuItem Header="_Alquilar"/>
+                    <MenuItem Header="_Adicionar"/>
+                    <MenuItem Header="_Listado"/>
+                </MenuItem>
+                <MenuItem Header="_Alquileres" Style="{StaticResource MenuItemBaseStyle}">
+                    <MenuItem Header="_Listado" />
+                    <MenuItem Header="_Resumen" />
+                </MenuItem>
+            </Menu>
+            <StackPanel>
+                <Viewbox Grid.Row="1" Grid.Column="0" Height="100" >
+                    <Label Content="Video Club" FontSize="100" Margin="0 0 0 0" Foreground="#ff5555"
+                           FontStyle="Italic"/>
+                </Viewbox>
+                <Viewbox Grid.Row="1" Grid.Column="0">
+                    <Label Content="Version Original" FontSize="18" Margin="0 0 0 0" Foreground="White"/>
+                </Viewbox>
+            </StackPanel>
+        </DockPanel>
+    </Grid>
+</Window>
