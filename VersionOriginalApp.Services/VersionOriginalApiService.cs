@@ -49,7 +49,7 @@ namespace VersionOriginalApp.Services
                 $"&ItemByPage={paginateParameters.ItemByPage}");
 
             if (!response.IsSuccessStatusCode) {
-                throw new Exception("Ha ocurrido un error tratando de obtener el listdo de peliculas");
+                throw new Exception("Ha ocurrido un error tratando de obtener el listdo de estados");
             }
 
             var content = await response.Content.ReadAsStringAsync();
@@ -60,7 +60,50 @@ namespace VersionOriginalApp.Services
                 return result.Data;
             }
 
-            throw new Exception("Ha ocurrido un error tratando de obtener el listdo de peliculas");
+            throw new Exception("Ha ocurrido un error tratando de obtener el listdo de estados");
+        }
+
+        public async Task<PaginateResultDto<ClientDto>> GetClients(PaginateParametersDto paginateParameters, ClientStatusDto clientStatus)
+        {
+            var response = await _httpClient.GetAsync(
+                $"clients?CurrentPage={paginateParameters.CurrentPage}" +
+                $"&ItemByPage={paginateParameters.ItemByPage}" +
+                $"&ClientStatus.Name={clientStatus.Name}&ClientStatus.Id={clientStatus.Id}");
+
+            if (!response.IsSuccessStatusCode) {
+                throw new Exception("Ha ocurrido un error tratando de obtener el listdo de clientes");
+            }
+
+            var content = await response.Content.ReadAsStringAsync();
+            var result
+                = JsonConvert.DeserializeObject<ResponseDto<PaginateResultDto<ClientDto>>>(content);
+
+            if (result != null && result.IsSuccess()) {
+                return result.Data;
+            }
+
+            throw new Exception("Ha ocurrido un error tratando de obtener el listdo de clients");
+        }
+
+        public async Task<PaginateResultDto<ClientStatusDto>> GetClientsStatus(PaginateParametersDto paginateParameters)
+        {
+            var response = await _httpClient.GetAsync(
+                $"client-status?CurrentPage={paginateParameters.CurrentPage}" +
+                $"&ItemByPage={paginateParameters.ItemByPage}");
+
+            if (!response.IsSuccessStatusCode) {
+                throw new Exception("Ha ocurrido un error tratando de obtener el listdo de estados");
+            }
+
+            var content = await response.Content.ReadAsStringAsync();
+            var result
+                = JsonConvert.DeserializeObject<ResponseDto<PaginateResultDto<ClientStatusDto>>>(content);
+
+            if (result != null && result.IsSuccess()) {
+                return result.Data;
+            }
+
+            throw new Exception("Ha ocurrido un error tratando de obtener el listdo de estados");
         }
     }
 }

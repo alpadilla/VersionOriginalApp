@@ -10,5 +10,7 @@ namespace VersionOriginalApp.Services.Interfaces
     {
         Task<PaginateResultDto<FilmDvdDto>> GetFilmDvds(PaginateParametersDto paginateParameters, DvdStatusDto dvdStatus);
         Task<PaginateResultDto<DvdStatusDto>> GetDvdsStatus(PaginateParametersDto paginateParameters);
+        Task<PaginateResultDto<ClientDto>> GetClients(PaginateParametersDto paginateParameters, ClientStatusDto clientStatus);
+        Task<PaginateResultDto<ClientStatusDto>> GetClientsStatus(PaginateParametersDto paginateParameters);
     }
 }

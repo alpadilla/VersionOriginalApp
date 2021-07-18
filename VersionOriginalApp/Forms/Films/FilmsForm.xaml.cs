@@ -32,27 +32,27 @@ namespace VersionOriginalApp.Forms.Films
             //dvdsStatusComboBox.SelectedValuePath = "Id";
             //dvdsStatusComboBox.SelectedIndex = 0;
             await ((FilmListViewModel) DataContext).LoadDvdsStatus();
-            await ((FilmListViewModel) DataContext).LoadFilms(LoadFilmDvdActions.Default);
+            await ((FilmListViewModel) DataContext).LoadFilms(PaginateAction.Default);
         }
 
         private async void BtnFirst_OnClick(object sender, RoutedEventArgs e)
         {
-            await ((FilmListViewModel) DataContext).LoadFilms(LoadFilmDvdActions.FirstPage);
+            await ((FilmListViewModel) DataContext).LoadFilms(PaginateAction.FirstPage);
         }
 
         private async void BtnNext_OnClick(object sender, RoutedEventArgs e)
         {
-            await ((FilmListViewModel) DataContext).LoadFilms(LoadFilmDvdActions.NextPage);
+            await ((FilmListViewModel) DataContext).LoadFilms(PaginateAction.NextPage);
         }
 
         private async void BtnLast_OnClick(object sender, RoutedEventArgs e)
         {
-            await ((FilmListViewModel) DataContext).LoadFilms(LoadFilmDvdActions.LastPage);
+            await ((FilmListViewModel) DataContext).LoadFilms(PaginateAction.LastPage);
         }
 
         private async void BtnPrev_OnClick(object sender, RoutedEventArgs e)
         {
-            await ((FilmListViewModel) DataContext).LoadFilms(LoadFilmDvdActions.PreviousPage);
+            await ((FilmListViewModel) DataContext).LoadFilms(PaginateAction.PreviousPage);
         }
 
         private async void DvdsStatusComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -60,7 +60,7 @@ namespace VersionOriginalApp.Forms.Films
             var dvdStatus = (sender as ComboBox)?.SelectedItem as DvdStatusDto;
             if (dvdStatus != null) {
                 ((FilmListViewModel) DataContext).SelectDvdStatus = dvdStatus;
-                await((FilmListViewModel) DataContext).LoadFilms(LoadFilmDvdActions.Default);
+                await((FilmListViewModel) DataContext).LoadFilms(PaginateAction.Default);
             }
         }
     }

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -12,38 +10,38 @@ using VersionOriginalApp.Services.Interfaces;
 
 namespace VersionOriginalApp.ViewModels
 {
-    public class FilmListViewModel : INotifyPropertyChanged
+    public class ClientsViewModel : INotifyPropertyChanged
     {
         private readonly IVersionOriginalApiService _versionOriginalApiService;
         private bool _loading;
-        private Visibility _showFilms;
+        private Visibility _showClients;
         private int _currentPage;
         private int _numberOfPages;
         private int _itemByPage;
         private int _totalOfItems;
         private string _paginateInfo;
-        private DvdStatusDto _selectDvdStatus;
-        private List<DvdStatusDto> _dvdStatus;
+        private ClientStatusDto _selectedClientStatus;
+        private List<ClientStatusDto> _clientsStatus;
 
-        public FilmListViewModel(IVersionOriginalApiService versionOriginalApiService)
+        public ClientsViewModel(IVersionOriginalApiService versionOriginalApiService)
         {
             _versionOriginalApiService = versionOriginalApiService;
             _loading = true;
-            _showFilms = Visibility.Hidden;
+            _showClients = Visibility.Hidden;
             _currentPage = 1;
             _itemByPage = 14;
             _numberOfPages = 0;
             _totalOfItems = 0;
         }
 
-        public Visibility ShowFilms
+        public Visibility ShowClients
         {
-            get => _showFilms;
+            get => _showClients;
 
             set
             {
-                _showFilms = value;
-                NotifyPropertyChanged(nameof(ShowFilms));
+                _showClients = value;
+                NotifyPropertyChanged(nameof(ShowClients));
             }
         }
 
@@ -93,36 +91,36 @@ namespace VersionOriginalApp.ViewModels
             }
         }
 
-        private IEnumerable<FilmDvdDto> _filmDvds;
-        public IEnumerable<FilmDvdDto> FilmDvds 
+        private IEnumerable<ClientDto> _clients;
+        public IEnumerable<ClientDto> Clients
         { 
-            get => _filmDvds;
+            get => _clients;
             set
             {
-                _filmDvds = value;
-                NotifyPropertyChanged(nameof(FilmDvds));
+                _clients = value;
+                NotifyPropertyChanged(nameof(Clients));
             }
         }
 
-        public List<DvdStatusDto> DvdStatus {
-            get => _dvdStatus;
+        public List<ClientStatusDto> ClientsStatus {
+            get => _clientsStatus;
             set 
             {
-                _dvdStatus = value;
-                NotifyPropertyChanged(nameof(DvdStatus));
+                _clientsStatus = value;
+                NotifyPropertyChanged(nameof(ClientsStatus));
             }
         }
 
-        public DvdStatusDto SelectDvdStatus {
-            get => _selectDvdStatus;
+        public ClientStatusDto SelectedClientStatus {
+            get => _selectedClientStatus;
 
             set {
-                _selectDvdStatus = value;
-                NotifyPropertyChanged(nameof(SelectDvdStatus));
+                _selectedClientStatus = value;
+                NotifyPropertyChanged(nameof(SelectedClientStatus));
             }
         }
 
-        public async Task LoadFilms(PaginateAction action)
+        public async Task LoadClients(PaginateAction action)
         {
             switch (action) {
                 case PaginateAction.Default:
@@ -150,31 +148,31 @@ namespace VersionOriginalApp.ViewModels
                     break;
             }
             Loading = true;
-            ShowFilms = Visibility.Hidden;
-            var result = await _versionOriginalApiService.GetFilmDvds(new PaginateParametersDto
+            ShowClients = Visibility.Hidden;
+            var result = await _versionOriginalApiService.GetClients(new PaginateParametersDto
             {
                 CurrentPage = _currentPage,
                 ItemByPage = _itemByPage
-            }, SelectDvdStatus);
-            FilmDvds = result.Data;
+            }, SelectedClientStatus);
+            Clients = result.Data;
             NumberOfPages = result.TotalOfPages;
             TotalOfItems = result.TotalOfItems;
             PaginateInfo =
                 $"Mostrando del {(_currentPage == 1 ? _currentPage : (_currentPage-1) * _itemByPage + 1)} al {_currentPage * _itemByPage} de {_totalOfItems} elementos";
-            ShowFilms = Visibility.Visible;
+            ShowClients = Visibility.Visible;
             Loading = false;
         }
 
-        public async Task<IEnumerable<DvdStatusDto>> LoadDvdsStatus()
+        public async Task<IEnumerable<ClientStatusDto>> LoadClientsStatus()
         {
             Loading = true;
-            ShowFilms = Visibility.Hidden;
-            var result = await _versionOriginalApiService.GetDvdsStatus(new PaginateParametersDto {
+            ShowClients = Visibility.Hidden;
+            var result = await _versionOriginalApiService.GetClientsStatus(new PaginateParametersDto {
                 CurrentPage = _currentPage,
                 ItemByPage = _itemByPage
             });
-            DvdStatus = result.Data.ToList();
-            SelectDvdStatus = DvdStatus.Any() ? DvdStatus.First() : null;
+            ClientsStatus = result.Data.ToList();
+            SelectedClientStatus = ClientsStatus.Any() ? ClientsStatus.First() : null;
             Loading = false;
             return result.Data;
         }
@@ -186,14 +184,5 @@ namespace VersionOriginalApp.ViewModels
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-    }
-    
-    public enum PaginateAction
-    {
-        Default = 0,
-        FirstPage = 1,
-        LastPage = 2,
-        PreviousPage = 3,
-        NextPage = 4
     }
 }

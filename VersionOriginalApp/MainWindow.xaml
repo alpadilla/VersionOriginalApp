@@ -19,7 +19,7 @@
                 <MenuItem Header="_Socios" Style="{StaticResource MenuItemBaseStyle}">
                     <MenuItem Header="_Alquilar"/>
                     <MenuItem Header="_Adicionar"/>
-                    <MenuItem Header="_Listado"/>
+                    <MenuItem Header="_Listado" Click="Clients_OnClick"/>
                 </MenuItem>
                 <MenuItem Header="_Alquileres" Style="{StaticResource MenuItemBaseStyle}">
                     <MenuItem Header="_Listado" />
