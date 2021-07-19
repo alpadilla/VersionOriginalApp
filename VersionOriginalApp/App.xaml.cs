@@ -1,14 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using VersionOriginalApp.Forms.Films;
-using VersionOriginalApp.Services;
 using VersionOriginalApp.Services.Interfaces;
 
 namespace VersionOriginalApp
@@ -33,7 +25,7 @@ namespace VersionOriginalApp
                 client.BaseAddress =
                     new Uri("http://localhost:8080/api/");
             });
-            services.AddTransient<IVersionOriginalApiService, VersionOriginalApiService>();
+            services.AddTransient<IVersionOriginalApiService, Services.VersionOriginalApiService>();
             services.AddSingleton<MainWindow>();
         }
 

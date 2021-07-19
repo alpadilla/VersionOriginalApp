@@ -2,6 +2,7 @@
 using System.Windows;
 using VersionOriginalApp.Forms.Clients;
 using VersionOriginalApp.Forms.Films;
+using VersionOriginalApp.Forms.Rents;
 using VersionOriginalApp.Services;
 using VersionOriginalApp.Services.Interfaces;
 
@@ -29,6 +30,29 @@ namespace VersionOriginalApp
         {
             var clientsForm = new ClientsForm(_versionOriginalApiService);
             clientsForm.Show();
+        }
+
+        private void RentResume_OnClick(object sender, RoutedEventArgs e)
+        {
+            var rentResumeForm = new RentSummaryForm(_versionOriginalApiService);
+            rentResumeForm.Show();
+        }
+
+        private void AddRent_OnClick(object sender, RoutedEventArgs e)
+        {
+            var addRentForm = new AddRentFrom(_versionOriginalApiService);
+            addRentForm.Show();
+        }
+
+        private void MakeReturn_OnClick(object sender, RoutedEventArgs e)
+        {
+            var returnRentForm = new ReturnRentForm(_versionOriginalApiService);
+            returnRentForm.Show();
+        }
+
+        private void CloseApp_OnClick(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }

@@ -1,0 +1,65 @@
+﻿<Window x:Class="VersionOriginalApp.Forms.Rents.RentSummaryForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VersionOriginalApp.Forms.Rents"
+        xmlns:loadingSpinnerControl="clr-namespace:LoadingSpinnerControl;assembly=LoadingSpinnerControl"
+        mc:Ignorable="d"
+        Title="Resumen de Rentas, Gastos y Ventas" Height="450" Width="800" ContentRendered="RentSummaryForm_OnContentRendered">
+    <Grid Background="#44475a">
+        <loadingSpinnerControl:LoadingSpinner Grid.Row="1" Margin="10" IsLoading="{Binding Loading}"/>
+        <StackPanel>
+            <Label HorizontalAlignment="Left" Margin="5"
+                   Name="lblTotalRentsOfFilms" Content="{Binding RentSummaryInfo.TotalRentsOfFilms}"
+                   Visibility="{Binding ShowRentSummary }"
+                   Foreground="White" FontWeight="Bold"
+                   HorizontalContentAlignment="Center"/>
+            <Label HorizontalAlignment="Left" Margin="5"
+                   Name="lblTotalRentsOfGames" Content="{Binding RentSummaryInfo.TotalRentsOfGames}"
+                   Visibility="{Binding ShowRentSummary }"
+                   Foreground="White" FontWeight="Bold"
+                   HorizontalContentAlignment="Center"/>
+            <Label HorizontalAlignment="Left" Margin="5"
+                   Name="lblExpensesByYear" Content="{Binding RentSummaryInfo.ExpensesByYear}"
+                   Visibility="{Binding ShowRentSummary }"
+                   Foreground="White" FontWeight="Bold"
+                   HorizontalContentAlignment="Center"/>
+            <Label HorizontalAlignment="Left" Margin="5"
+                   Name="lblFilmsExpensesByYear" Content="{Binding RentSummaryInfo.FilmsExpensesByYear}"
+                   Visibility="{Binding ShowRentSummary }"
+                   Foreground="White" FontWeight="Bold"
+                   HorizontalContentAlignment="Center"/>
+            <Label HorizontalAlignment="Left" Margin="5"
+                   Name="lblGamesExpensesByYear" Content="{Binding RentSummaryInfo.GamesExpensesByYear}"
+                   Visibility="{Binding ShowRentSummary }"
+                   Foreground="White" FontWeight="Bold"
+                   HorizontalContentAlignment="Center"/>
+            <Label HorizontalAlignment="Left" Margin="5"
+                   Name="lblRevenuesByYear" Content="{Binding RentSummaryInfo.RevenuesByYear}"
+                   Visibility="{Binding ShowRentSummary }"
+                   Foreground="White" FontWeight="Bold"
+                   HorizontalContentAlignment="Center"/>
+            <Label HorizontalAlignment="Left" Margin="5"
+                   Name="lblFilmsRevenuesByYear" Content="{Binding RentSummaryInfo.FilmsRevenuesByYear}"
+                   Visibility="{Binding ShowRentSummary }"
+                   Foreground="White" FontWeight="Bold"
+                   HorizontalContentAlignment="Center"/>
+            <Label HorizontalAlignment="Left" Margin="5"
+                   Name="lblGamesRevenuesByYear" Content="{Binding RentSummaryInfo.GamesRevenuesByYear}"
+                   Visibility="{Binding ShowRentSummary }"
+                   Foreground="White" FontWeight="Bold"
+                   HorizontalContentAlignment="Center"/>
+            <Label HorizontalAlignment="Left" Margin="5"
+                   Name="lblFilmsRentsRevenuesAverageByYear" Content="{Binding RentSummaryInfo.FilmsRentsRevenuesAverageByYear}"
+                   Visibility="{Binding ShowRentSummary }"
+                   Foreground="White" FontWeight="Bold"
+                   HorizontalContentAlignment="Center"/>
+            <Label HorizontalAlignment="Left" Margin="5"
+                   Name="lblGamesRentsRevenuesAverageByYear" Content="{Binding RentSummaryInfo.GamesRentsRevenuesAverageByYear}"
+                   Visibility="{Binding ShowRentSummary }"
+                   Foreground="White" FontWeight="Bold"
+                   HorizontalContentAlignment="Center"/>
+        </StackPanel>
+    </Grid>
+</Window>

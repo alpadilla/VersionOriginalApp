@@ -4,26 +4,23 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="" Height="450" Width="800">
     <Grid Background="#44475a">
         <DockPanel>
             <Menu DockPanel.Dock="Top" Background="#282a36" Foreground="White">
                 <MenuItem Header="_Aplicación" Style="{StaticResource MenuItemBaseStyle}">
-                    <MenuItem Header="_Close"/>
+                    <MenuItem Header="_Close" Click="CloseApp_OnClick"/>
                 </MenuItem>
                 <MenuItem Header="_Películas" Style="{StaticResource MenuItemBaseStyle}">
-                    <MenuItem Header="_Alquilar"/>
-                    <MenuItem Header="_Adicionar"/>
                     <MenuItem Header="_Listado" Click="FilmListItem_OnClick"/>
                 </MenuItem>
                 <MenuItem Header="_Socios" Style="{StaticResource MenuItemBaseStyle}">
-                    <MenuItem Header="_Alquilar"/>
-                    <MenuItem Header="_Adicionar"/>
                     <MenuItem Header="_Listado" Click="Clients_OnClick"/>
                 </MenuItem>
                 <MenuItem Header="_Alquileres" Style="{StaticResource MenuItemBaseStyle}">
-                    <MenuItem Header="_Listado" />
-                    <MenuItem Header="_Resumen" />
+                    <MenuItem Header="_Alquilar" Click="AddRent_OnClick"/>
+                    <MenuItem Header="_Devolucion" Click="MakeReturn_OnClick"/>
+                    <MenuItem Header="_Resumen" Click="RentResume_OnClick" />
                 </MenuItem>
             </Menu>
             <StackPanel>

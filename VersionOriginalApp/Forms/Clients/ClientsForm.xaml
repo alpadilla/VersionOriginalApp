@@ -44,7 +44,7 @@
                     <GridViewColumn Header="DNI" DisplayMemberBinding="{Binding Dni}" Width="100"/>
                     <GridViewColumn Header="Teléfono" DisplayMemberBinding="{Binding Phone}" Width="100"/>
                     <GridViewColumn Header="Correo" DisplayMemberBinding="{Binding Email}" Width="100"/>
-                    <GridViewColumn Header="Tipo" DisplayMemberBinding="{Binding ClientTypeId}" Width="100"/>
+                    <GridViewColumn Header="Tipo" DisplayMemberBinding="{Binding ClientType.Name}" Width="100"/>
                 </GridView>
             </ListView.View>
         </ListView>
